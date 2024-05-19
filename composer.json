@@ -1,0 +1,66 @@
+{
+    "name": "mlocati/nexi-xpay",
+    "description": "An unofficial SDK for the Nexi XPay payment gateway (not for Intesa Sanpaolo bank customers)",
+    "type": "library",
+    "keywords": [
+        "nexi",
+        "xpay",
+        "x-pay",
+        "gateway",
+        "payment",
+		"intesa"
+    ],
+    "homepage": "https://github.com/mlocati/nexi-xpay",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michele Locati",
+            "email": "michele@locati.it"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/mlocati/nexi-xpay/issues",
+        "source": "https://github.com/mlocati/nexi-xpay"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/mlocati"
+        },
+        {
+            "type": "other",
+            "url": "https://paypal.me/mlocati"
+        }
+    ],
+    "require": {
+        "php": ">= 7.2",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "suggest": {
+        "ext-curl": "To use cURL for HTTP requests",
+        "ext-openssl": "To use the stream wrapper for HTTP requests"
+    },
+    "autoload": {
+        "psr-4": {
+            "MLocati\\Nexi\\XPay\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MLocati\\Nexi\\XPay\\Test\\": "test/"
+        }
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "optimize-autoloader" : true,
+        "preferred-install": "dist",
+        "sort-packages" : true
+    },
+    "scripts": {
+        "test": "phpunit --verbose"
+    },
+    "$schema": "https://raw.githubusercontent.com/composer/composer/main/res/composer-schema.json"
+}

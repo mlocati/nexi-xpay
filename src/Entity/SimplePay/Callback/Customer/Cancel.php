@@ -17,7 +17,7 @@ class Cancel extends Response
         parent::__construct($data);
     }
 
-    public static function fromCustomerRequest(array $getParameters = null): self
+    public static function fromCustomerRequest(?array $getParameters = null): self
     {
         return new self((object) ($getParameters === null ? $_GET : $getParameters));
     }

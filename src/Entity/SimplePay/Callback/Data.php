@@ -28,12 +28,12 @@ class Data extends Response implements EntityWithMac
         parent::__construct($data);
     }
 
-    public static function fromCustomerRequest(array $getParameters = null): self
+    public static function fromCustomerRequest(?array $getParameters = null): self
     {
         return new self((object) ($getParameters === null ? $_GET : $getParameters));
     }
 
-    public static function fromServer2ServerRequest(array $postParameters = null): self
+    public static function fromServer2ServerRequest(?array $postParameters = null): self
     {
         return new self((object) ($postParameters === null ? $_POST : $postParameters));
     }

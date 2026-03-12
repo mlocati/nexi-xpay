@@ -1,0 +1,58 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - "**"
+  workflow_dispatch:
+
+jobs:
+
+  check-php-syntax:
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - 7.2
+          - 8.5
+    name: Check PHP ${{ matrix.php-version }} syntax
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: opcache
+          coverage: none
+          tools: none
+      -
+        name: Checkout
+        uses: actions/checkout@v6
+      -
+        name: Check syntax
+        uses: mlocati/check-php-syntax@v1
+        with:
+          fail-on-warnings: true
+
+
+  check-composer-json:
+    name: Check composer.json
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
+          tools: composer
+      -
+        name: Checkout
+        uses: actions/checkout@v6
+      -
+        name: Check composer.json
+        run: composer validate --strict
